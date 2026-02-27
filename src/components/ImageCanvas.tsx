@@ -35,7 +35,7 @@ export const ImageCanvas: React.FC<ImageCanvasProps> = ({ imageSrc, polygonState
         setMousePosition(null);
     };
 
-    const handlePointClick = (e: React.PointerEvent | React.TouchEvent | React.MouseEvent, index: number) => {
+    const handlePointClick = (_e: React.PointerEvent | React.TouchEvent | React.MouseEvent, index: number) => {
         if (!isClosed && index === 0 && points.length >= 3) {
             closePolygon();
         }
