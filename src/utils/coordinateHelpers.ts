@@ -5,10 +5,6 @@ export interface Point {
   y: number;
 }
 
-/**
- * Gets the coordinates of a mouse event relative to an element.
- * Useful when the element might be scaled, to ensure perfect alignment.
- */
 export const getRelativeCoordinates = (
   e: React.MouseEvent | MouseEvent | React.TouchEvent | TouchEvent | React.PointerEvent | PointerEvent,
   container: HTMLElement

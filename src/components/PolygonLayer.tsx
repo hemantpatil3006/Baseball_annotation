@@ -35,10 +35,9 @@ export const PolygonLayer: React.FC<PolygonLayerProps> = ({
                 left: 0,
                 width: '100%',
                 height: '100%',
-                pointerEvents: 'none', // SVG itself shouldn't block clicks, only the points (circles) will intercept if needed
+                pointerEvents: 'none',
             }}
         >
-            {/* Dashed line to cursor */}
             {activeLinePoints && (
                 <polyline
                     points={activeLinePoints}
@@ -49,12 +48,11 @@ export const PolygonLayer: React.FC<PolygonLayerProps> = ({
                 />
             )}
 
-            {/* The completed or in-progress shape */}
             {points.length > 0 && (
                 isClosed ? (
                     <polygon
                         points={pointsString}
-                        fill="rgba(59, 130, 246, 0.3)" // Tailwind blue-500 equivalent
+                        fill="rgba(59, 130, 246, 0.3)"
                         stroke="rgb(59, 130, 246)"
                         strokeWidth="2"
                     />
@@ -68,7 +66,6 @@ export const PolygonLayer: React.FC<PolygonLayerProps> = ({
                 )
             )}
 
-            {/* Vertices */}
             {points.map((p, i) => {
                 const isFirst = i === 0;
                 const canCloseOnThis = isFirst && isPolygonClosable;
@@ -78,13 +75,13 @@ export const PolygonLayer: React.FC<PolygonLayerProps> = ({
                         <circle
                             cx={p.x}
                             cy={p.y}
-                            r={canCloseOnThis ? 8 : 4} // highlight first point
-                            fill={isFirst ? '#ef4444' : '#fff'} // red for start, white for others
+                            r={canCloseOnThis ? 8 : 4}
+                            fill={isFirst ? '#ef4444' : '#fff'}
                             stroke="rgb(59, 130, 246)"
                             strokeWidth="2"
                             className={canCloseOnThis ? 'closable-point' : ''}
                             onPointerDown={(e) => {
-                                e.stopPropagation(); // Prevent canvas background click
+                                e.stopPropagation();
                                 onPointClick(e, i);
                             }}
                             style={{

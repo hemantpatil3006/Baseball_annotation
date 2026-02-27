@@ -20,7 +20,6 @@ ${points.map(formatPoint).join(',\n')}
 }`;
 
     const handleExport = () => {
-        // Show modal instead of instantly downloading
         setShowJson(true);
         setCopied(false);
     };
